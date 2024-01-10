@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  rules:
+  - host: tu-dominio.com
+    http:
+      paths:
+      - path: /account
+        pathType: Prefix
+        backend:
+          service:
+            name: account-service-dev
+            port:
+              number: 80
+      - path: /tracking
+        pathType: Prefix
+        backend:
+          service:
+            name: tracking-service-dev
+            port:
+              number: 3000
